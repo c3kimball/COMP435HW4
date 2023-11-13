@@ -35,7 +35,7 @@ def counting_sort(nums: list, exponent: int):
 
 def radix_sort(nums: list):
     """Applies Radix sort on a list of numbers.
-    Uses countingsort as the main sorting algorithm"""
+    Uses counting sort as the main sorting algorithm"""
     max_num = max(nums)
     exp = 1
     while max_num // exp > 0:
@@ -54,15 +54,29 @@ def generate_random_nums(size: int, low: int, high: int):
 
 
 def main():
-    random_numbers = generate_random_nums(10, 0, 9999)
-    print(f"Random numbers to be sorted: {random_numbers}")
+    print("All numbers inputted must be positive whole numbers.")
+    print("To quit the program, when asked for how many numbers to be sorted enter 0")
+    while 1:
+        try:
+            size = abs(int(input("How many numbers do you wanted sorted? ")))
+            if (size == 0):
+                print("Have a good day.")
+                exit()
+            low = abs(int(input("Enter a lower bound: ")))
+            high = abs(int(input("Enter an upper bound: ")))
+            random_numbers = generate_random_nums(size, low, high)
+            print(f"\nRandom numbers to be sorted: {random_numbers}")
 
-   # nums = [2, 4, 7, 1, 5, 1, 8, 4, 7, 9, 2, 9] # A hardcoded example I used for testing
-    # print(f"Printing fixed list: {counting_sort(nums, 1)}")
-    # print(nums)
-    print("Applying radix_sort on random_nums...")
-    radix_sort(random_numbers)
-    print(f"Sorted random_numbers: {random_numbers}")
+        except Exception as e:
+            print(f"Error: {e} please try using positive whole numbers only.\n")
+            continue
+
+       # nums = [2, 4, 7, 1, 5, 1, 8, 4, 7, 9, 2, 9] # A hardcoded example I used for testing
+        # print(f"Printing fixed list: {counting_sort(nums, 1)}")
+        # print(nums)
+        print("Applying radix_sort on random_nums...")
+        radix_sort(random_numbers)
+        print(f"Sorted random_numbers: {random_numbers}\n")
 
 
 if __name__ == "__main__":
